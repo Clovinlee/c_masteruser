@@ -33,9 +33,9 @@ class UserController extends Controller
             } else {
                 $usr = $usr->values();
             }
-            return makeJson(200, "Success get user", $usr);
+            return response(makeJson(200, "Success get user", $usr));
         } catch (\Throwable $th) {
-            return makeJson(400, $th->getMessage(), null);
+            return response(makeJson(400, $th->getMessage(), null));
         }
     }
 

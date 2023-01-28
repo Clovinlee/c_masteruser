@@ -7,5 +7,5 @@ function makeJson(int $status, string $message, $data){
         "data" => $data,
     ];
 
-    return json_encode($json);
+    return $json;
 }

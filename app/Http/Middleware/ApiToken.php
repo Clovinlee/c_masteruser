@@ -21,13 +21,13 @@ class ApiToken
         $auth = $request->header('Authorization');
 
         if ($auth == null) {
-            return response(makeJson(401, "No access token", null));
+            return makeJson(401, "No access token", null);
         }
 
         if ($auth == env('APP_KEY')) {
-            return $next;
+            return $next($request);
         } else {
-            return response(makeJson(401, "Unauthorized access token", null));
+            return makeJson(401, "Unauthorized access token", null);
         }
 
 

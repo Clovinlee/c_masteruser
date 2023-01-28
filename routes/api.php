@@ -15,6 +15,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get("/testapi", function () {
+    $endpoint = "http://localhost:8000/api/users";
+    $ch = curl_init($endpoint);
+
+    curl_setopt($ch, CURLOPT_HTTPHEADER, ["Authorization: a"]);
+
+
+    $server_output = curl_exec($ch);
+
+    curl_close($ch);
+
+    return $server_output;
+});
+
 Route::middleware("apitoken")->group(function () {
     Route::get("/users", [UserController::class, "getUsers"]);
 });

@@ -17,14 +17,27 @@ class ApiToken
 
     public function handle(Request $request, Closure $next)
     {
-        if ($request->header("Authorization") == "") {
-            return makeJson(400, "No access token", null);
+
+        $auth = $request->header('Authorization');
+
+        if ($auth == null) {
+            return response(makeJson(401, "No access token", null));
         }
 
-        if ($request->header('Authorization') == env('APP_KEY')) {
-            return $next($request);
+        if ($auth == env('APP_KEY')) {
+            return $next;
         } else {
-            return makeJson(401, "Unauthorized access token", null);
+            return response(makeJson(401, "Unauthorized access token", null));
         }
+
+
+        // if ($request->header("Authorization") == "") {
+        // }
+
+        // if ($auth == env('APP_KEY')) {
+        //     return $next($request);
+        // } else {
+        //     return makeJson(401, "Unauthorized access token", null);
+        // }
     }
 }

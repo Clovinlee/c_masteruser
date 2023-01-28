@@ -15,6 +15,4 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware("apitoken")->group(function () {
-    Route::get("/users", [UserController::class, "getUsers"]);
-});
+Route::get("/users", [UserController::class, "getUsers"]);

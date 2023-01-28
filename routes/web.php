@@ -19,8 +19,8 @@ Route::get('/', function () {
 
 Route::get("/test", function () {
     // $url = "https://dummyjson.com/products";
-    // $url = "https://mhs.sib.stts.edu/k4nobar/c_masteruser/c_masteruser/public/api/users";
-    $url = "https://localhost:8000/api/users";
+    $url = "https://mhs.sib.stts.edu/k4nobar/c_masteruser/c_masteruser/public/api/users";
+    // $url = "https://localhost:8000/api/users";
 
     $ch = curl_init($url);
     curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "GET");

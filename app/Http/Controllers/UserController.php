@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
@@ -33,9 +34,9 @@ class UserController extends Controller
             } else {
                 $usr = $usr->values();
             }
-            return makeJson(200, "Success get user", $usr);
+            return makeJson("Success get user", $usr);
         } catch (\Throwable $th) {
-            return makeJson(400, $th->getMessage(), null);
+            return makeJson($th->getMessage(), null);
         }
     }
 
@@ -46,9 +47,9 @@ class UserController extends Controller
         try {
             $usr = User::where("name", "like", "%" . $name . "%")->where("email", "like", "%" . $email . "%")->get();
             $usr = $usr->values();
-            return makeJson(200, "Success get user", $usr);
+            return makeJson("Success get user", $usr);
         } catch (\Throwable $th) {
-            return makeJson(400, $th->getMessage(), null);
+            return makeJson($th->getMessage(), null);
         }
     }
 
@@ -56,7 +57,7 @@ class UserController extends Controller
     {
         $usr_exist = User::where("email", $r->email)->get();
         if (count($usr_exist) > 0) {
-            return makeJson(400, "Error, email already used!", null);
+            return makeJson("Error, email already used!", null);
         }
 
         try {
@@ -70,9 +71,9 @@ class UserController extends Controller
 
             $user->save();
 
-            return makeJson(200, "Register Success", [$user]);
+            return makeJson("Register Success", [$user]);
         } catch (\Throwable $th) {
-            return makeJson(400, $th->getMessage(), null);
+            return makeJson($th->getMessage(), null);
         }
     }
 }

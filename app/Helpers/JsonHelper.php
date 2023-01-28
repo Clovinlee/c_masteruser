@@ -1,9 +1,9 @@
 <?php
 
-function makeJson(int $status, string $message, $data){
+function makeJson(string $message, $data)
+{
     $json = [
-        "status"=>$status,
-        "message"=> $message,
+        "message" => $message,
         "data" => $data,
     ];
 

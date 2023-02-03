@@ -73,8 +73,6 @@ class UserController extends Controller
             $user->type = $r->type;
             $user->password = Hash::make($r->password);
 
-            $user->notelp = $r->notelp;
-
             $user->save();
 
             return makeJson("Register Success", [$user]);

@@ -27,6 +27,7 @@ class DatabaseSeeder extends Seeder
         User::create([
             "name" => "Andy",
             "email" => "a@gmail.com",
+            "type" => 2,
             // "description"=>"",
             // "password" => "a",
             "password" => Hash::make("a"),
@@ -36,6 +37,7 @@ class DatabaseSeeder extends Seeder
             "name" => "Benyamin Limanto",
             "email" => "b@gmail.com",
             "description" => "Koding adalah makanan ku sehari hari",
+            "type" => 1,
             // "password" => "b",
             "password" => Hash::make("b"),
         ]);
@@ -44,6 +46,7 @@ class DatabaseSeeder extends Seeder
             "name" => "Chrisanto Sinatra",
             "email" => "c@gmail.com",
             "description" => "Aku adalah orang malas yang ingin kaya dengan cepat tanpa usaha",
+            "type" => 1,
             // "password" => "c",
             "password" => Hash::make("c"),
         ]);

@@ -14,6 +14,7 @@ class UserController extends Controller
         $id = $r->id;
         $email = $r->email;
         $password = $r->password;
+        $type = $r->type;
 
         try {
             $usr = User::all();
@@ -22,6 +23,9 @@ class UserController extends Controller
             }
             if ($email != null) {
                 $usr = $usr->where("email", $email);
+            }
+            if ($type != null) {
+                $usr = $usr->where("type", $type);
             }
             if ($password != null) {
                 $arr = [];
@@ -44,8 +48,9 @@ class UserController extends Controller
     {
         $name = $r->name;
         $email = $r->email;
+        $type = $r->type;
         try {
-            $usr = User::where("name", "like", "%" . $name . "%")->where("email", "like", "%" . $email . "%")->get();
+            $usr = User::where("name", "like", "%" . $name . "%")->where("email", "like", "%" . $email . "%")->where("type", "=", $type)->get();
             $usr = $usr->values();
             return makeJson("Success get user", $usr);
         } catch (\Throwable $th) {

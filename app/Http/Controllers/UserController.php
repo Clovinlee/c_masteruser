@@ -9,6 +9,24 @@ use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
+    public function editUser(Request $r)
+    {
+        try {
+            $user = User::find($r->id);
+            $user->name = $r->name;
+            $user->email = $r->email;
+            $user->description = $r->description;
+            $user->type = $r->type;
+            $user->password = Hash::make($r->password);
+
+            $user->save();
+
+            return makeJson("Success edit user", $user);
+        } catch (\Throwable $th) {
+            return makeJson($th->getMessage(), null);
+        }
+    }
+
     public function getUsers(Request $r)
     {
         $id = $r->id;

@@ -18,4 +18,5 @@ use Illuminate\Support\Facades\Route;
 Route::middleware("apitoken")->group(function () {
     Route::get("/users", [UserController::class, "getUsers"]);
     Route::post("/adduser", [UserController::class, "register"]);
+    Route::post("/edituser", [UserController::class, "editUser"]);
 });
